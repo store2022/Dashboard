@@ -48,7 +48,7 @@ $provinces = $stmt->fetchAll(); // Store the fetched data in $provinces
             color: white;
         }
     </style>
-    <title>Kelola Provinsi</title>
+    <title>Kelola Provinsii</title>
 </head>
 
 <body>
