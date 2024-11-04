@@ -1,4 +1,5 @@
 <?php
+<<<<<<< Updated upstream
 session_start();
 include '../koneksi.php';
 
@@ -91,3 +92,28 @@ if (isset($_GET['id'])) {
     ?>
 </body>
 </html>
+=======
+$host = 'localhost';
+$db = 'museum__3_';
+$user = 'username';
+$pass = 'password';
+
+$conn = new mysqli($host, $user, $pass, $db);
+
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_POST['id'];
+    $nama = $_POST['nama'];
+    $deskripsi = $_POST['deskripsi'];
+
+    $stmt = $conn->prepare("UPDATE negara SET nama = ?, deskripsi = ? WHERE id = ?");
+    $stmt->bind_param("ssi", $nama, $deskripsi, $id);
+    $stmt->execute();
+
+    header('Location: index.php'); // Kembali ke halaman index
+}
+?>
+>>>>>>> Stashed changes

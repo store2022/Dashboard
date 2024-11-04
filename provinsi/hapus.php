@@ -1,4 +1,5 @@
 <?php
+<<<<<<< Updated upstream
 session_start();
 include '../koneksi.php';
 
@@ -26,3 +27,30 @@ if (isset($_GET['id'])) {
     header('Location: index.php');
     exit;
 }
+=======
+include_once(__DIR__ . '/../koneksi.php');
+
+if(isset($_GET['id'])) {
+    try {
+        // Menghapus data provinsi
+        $stmt = $pdo->prepare("DELETE FROM provinsi WHERE id_provinsi = ?");
+        $stmt->execute([$_GET['id']]);
+        
+        echo "<script>
+            alert('Data Berhasil Dihapus');
+            window.location.href='../index.php?page=provinsi';
+        </script>";
+    } catch(PDOException $e) {
+        echo "<script>
+            alert('Gagal menghapus data: Data masih terhubung dengan data lain');
+            window.location.href='../index.php?page=provinsi';
+        </script>";
+    }
+} else {
+    echo "<script>
+        alert('ID tidak ditemukan!');
+        window.location.href='../index.php?page=provinsi';
+    </script>";
+}
+?>
+>>>>>>> Stashed changes

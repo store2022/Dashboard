@@ -1,10 +1,15 @@
 <?php 
 session_start(); // Mulai sesi
+<<<<<<< Updated upstream
+=======
+include('koneksi.php');
+>>>>>>> Stashed changes
 
 if (!isset($_SESSION['username'])) {
     header('Location: login.php'); // Redirect ke login jika belum masuk
     exit();
 }
+<<<<<<< Updated upstream
 
 // Contoh data untuk demonstrasi
 $total_visitors = 150; // Nilai contoh
@@ -13,6 +18,8 @@ $orders = [
     ['user_name' => 'User2', 'date_order' => '2024-10-02', 'status' => 'pending'],
     // Tambahkan lebih banyak pesanan jika perlu
 ];
+=======
+>>>>>>> Stashed changes
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +29,11 @@ $orders = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
+<<<<<<< Updated upstream
     <title>AdminHub</title>
+=======
+    <title>Museum</title>
+>>>>>>> Stashed changes
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,7 +56,11 @@ $orders = [
 
         /* Gaya konten */
         #content {
+<<<<<<< Updated upstream
             margin-left: 250px; /* Sesuaikan dengan lebar sidebar */
+=======
+            margin-left: 20px; /* Sesuaikan dengan lebar sidebar */
+>>>>>>> Stashed changes
             padding: 20px;
         }
 
@@ -124,12 +139,17 @@ $orders = [
         </a>
         <ul class="side-menu top">
             <li class="active">
+<<<<<<< Updated upstream
                 <a href="#">
+=======
+                <a href="#" onclick="showDashboard()">
+>>>>>>> Stashed changes
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <!-- Dropdown Museum -->
+<<<<<<< Updated upstream
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="museumDropdown" role="button" onclick="toggleDropdown(event, 'museumDropdownMenu')">
 					<i class='bx bxs-home'></i><span class="text">Museum</span>
@@ -172,6 +192,47 @@ $orders = [
         <ul class="side-menu">
             <li><a href="#"><i class='bx bxs-cog'></i><span class="text">Settings</span></a></li>
             <li><a href="#" class="logout"><i class='bx bxs-log-out-circle'></i><span class="text">Logout</span></a></li>
+=======
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="museumDropdown" role="button" onclick="toggleDropdown(event, 'museumDropdownMenu')">
+                    <i class='bx bxs-home'></i><span class="text">Museum</span>
+                </a>
+                <div class="dropdown-menu" id="museumDropdownMenu" aria-labelledby="museumDropdown">
+                    <a class="dropdown-item" href="#" onclick="showMuseum()">Museum</a>
+                    <a class="dropdown-item" href="#" onclick="showPameran()">Pameran</a>
+                </div>
+            </li>
+
+            <!-- Dropdown Lokasi -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="lokasiDropdown" role="button" onclick="toggleDropdown(event, 'lokasiDropdownMenu')">
+                    <i class='bx bxs-map icon'></i><span class="text">Lokasi</span>
+                </a>
+                <div class="dropdown-menu" id="lokasiDropdownMenu" aria-labelledby="lokasiDropdown">
+                    <a class="dropdown-item" href="#" onclick="showNegara()">Negara</a>
+                    <a class="dropdown-item" href="#" onclick="showProvinsi()">Provinsi</a>
+                    <a class="dropdown-item" href="#" onclick="showKota()">Kota</a>
+                </div>
+            </li>
+
+            <!-- Dropdown Koleksi -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="koleksiDropdown" role="button" onclick="toggleDropdown(event, 'koleksiDropdownMenu')">
+                    <i class='bx bxs-collection icon'></i><span class="text">Koleksi</span>
+                </a>
+                <div class="dropdown-menu" id="koleksiDropdownMenu" aria-labelledby="koleksiDropdown">
+                    <a class="dropdown-item" href="#" onclick="showJenis()">Jenis</a>
+                    <a class="dropdown-item" href="#" onclick="showKategori()">Kategori</a>
+                    <a class="dropdown-item" href="#" onclick="showKoleksi()">Koleksi</a>
+                    <a class="dropdown-item" href="#" onclick="showZaman()">Zaman</a>
+                    <a class="dropdown-item" href="#" onclick="showSubkoleksi()">Subkoleksi</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="side-menu">
+            <li><a href="#"><i class='bx bxs-cog'></i><span class="text">Settings</span></a></li>
+            <li><a href="logout.php" class="logout"><i class='bx bxs-log-out-circle'></i><span class="text">Logout</span></a></li>
+>>>>>>> Stashed changes
         </ul>
     </section>
 
@@ -191,6 +252,7 @@ $orders = [
             <a href="#" class="profile"><img src="img/people.png"></a>
         </nav>
 
+<<<<<<< Updated upstream
         <main>
             <div class="head-title">
                 <div class="left">
@@ -309,3 +371,123 @@ $orders = [
 
 </body>
 </html>
+=======
+        <main id="main-content">
+            <?php
+            if(isset($_GET['page'])) {
+                $page = $_GET['page'];
+                
+                switch($page) {
+                    case 'museum':
+                        include 'museum/indexmuseum.php';
+                        break;
+                    case 'pameran':
+                        include 'pameran/indexpameran.php';
+                        break;
+                    case 'negara':
+                        include 'negara/indexnegara.php';
+                        break;
+                    case 'provinsi':
+                        include 'provinsi/indexprovinsi.php';
+                        break;
+                    case 'kota':
+                        include 'kota/indexkota.php';
+                        break;
+                }
+            } 
+            ?>
+        </main>
+    </section>
+
+    <script>
+        function toggleDropdown(event, dropdownId) {
+            event.preventDefault(); // Mencegah aksi default
+
+            // Ambil semua dropdown
+            const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+            
+            dropdownMenus.forEach(menu => {
+                // Menyembunyikan semua dropdown yang terbuka
+                menu.style.display = 'none'; 
+            });
+
+            // Tampilkan dropdown yang sesuai
+            const selectedMenu = document.getElementById(dropdownId);
+            if (selectedMenu.style.display === 'block') {
+                selectedMenu.style.display = 'none'; // Sembunyikan jika sudah terbuka
+            } else {
+                selectedMenu.style.display = 'block'; // Tampilkan dropdown
+            }
+        }
+
+        // Fungsi untuk menampilkan konten di dalam elemen #main-content
+        function showDashboard() {
+            window.location.href = 'index.php?page=dasboard';
+        }
+
+        function showMuseum() {
+            const mainContent = document.getElementById('main-content');
+            window.location.href = 'index.php?page=museum';
+        }
+
+        function showPameran() {
+            const mainContent = document.getElementById('main-content');
+            window.location.href = 'index.php?page=pameran';
+        }
+
+        function showNegara() {
+            window.location.href = 'index.php?page=negara';
+            
+        }
+
+        function showProvinsi() {
+            window.location.href = 'index.php?page=provinsi';
+        }
+        
+
+        function showKota() {
+            window.location.href = 'index.php?page=kota';
+        }
+
+        function showJenis() {
+            window.location.href = 'index.php?page=jenis';
+        }
+
+        function showKategori() {
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = '<h1>Kategori</h1>';
+        }
+
+        function showKoleksi() {
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = '<h1>Koleksi</h1>';
+        }
+
+        function showZaman() {
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = '<h1>Zaman</h1>';
+        }
+
+        function showSubkoleksi() {
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = '<h1>Subkoleksi</h1>';
+        }
+
+        // Fungsi untuk menutup dropdown ketika di klik di luar
+        document.addEventListener('click', function(event) {
+            if (!event.target.classList.contains('dropdown-toggle') && !event.target.classList.contains('dropdown-item')) {
+                const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+                dropdownMenus.forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+>>>>>>> Stashed changes

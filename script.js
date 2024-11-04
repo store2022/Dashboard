@@ -23,6 +23,7 @@ menuBar.addEventListener('click', function () {
 })
 
 // script.js
+<<<<<<< Updated upstream
 
 function toggleDropdown(event) {
     event.preventDefault(); // Prevent default action
@@ -39,8 +40,22 @@ window.onclick = function(event) {
 };
 
 
+=======
+>>>>>>> Stashed changes
 
+function toggleDropdown(event) {
+    event.preventDefault(); // Prevent default action
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block'; // Toggle display
+}
 
+// Close dropdown if clicked outside
+window.onclick = function(event) {
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    if (!event.target.matches('.dropdown-toggle') && dropdownMenu.style.display === 'block') {
+        dropdownMenu.style.display = 'none'; // Close the dropdown
+    }
+};
 
 
 
@@ -91,3 +106,36 @@ switchMode.addEventListener('change', function () {
 		document.body.classList.remove('dark');
 	}
 })
+
+function showNegara() {
+    // Hapus kelas active dari semua menu
+    document.querySelectorAll('.side-menu li').forEach(item => {
+        item.classList.remove('active');
+    });
+
+    // Tambahkan kelas active ke parent li dari menu Negara
+    document.querySelector('a[href="index.php?page=negara"]').closest('li').classList.add('active');
+
+    // Ambil konten negara
+    fetch('negara/indexnegara.php')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-content').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('main-content').innerHTML = '<h1>Error loading content</h1>';
+        });
+}
+
+function tambahNegara() {
+    fetch('negara/tambah.php')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-content').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan!');
+        });
+}

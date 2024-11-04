@@ -8,11 +8,20 @@ if (!isset($_SESSION['level']) || ($_SESSION['level'] != 'admin' && $_SESSION['l
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+<<<<<<< Updated upstream
     $nama_zaman = $_POST['nama_zaman'];
     $tahun = $_POST['tahun'];
 
     $stmt = $pdo->prepare("INSERT INTO zaman (nama_zaman, tahun) VALUES (?, ?)");
     $stmt->execute([$nama_zaman, $tahun]);
+=======
+    $id_zaman = $_POST['id_zaman'];
+    $nama_zaman = $_POST['nama_zaman'];
+    $tahun = $_POST['tahun'];
+
+    $stmt = $pdo->prepare("INSERT INTO zaman (id_zaman, nama_zaman, tahun) VALUES (?, ?)");
+    $stmt->execute([$id_zaman, $nama_zaman, $tahun]);
+>>>>>>> Stashed changes
 
     $_SESSION['success'] = "Zaman added successfully!";
     header('Location: index.php');

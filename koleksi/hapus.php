@@ -17,3 +17,7 @@ if ($id_koleksi) {
 
 header('Location: index.php');
 exit;
+<<<<<<< Updated upstream
+=======
+?>
+>>>>>>> Stashed changes

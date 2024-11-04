@@ -1,4 +1,5 @@
 <?php
+<<<<<<< Updated upstream
 session_start(); // Mulai session
 
 // Cek apakah pengguna sudah login
@@ -73,4 +74,45 @@ $negaras = $stmt->fetchAll();
     </div>
 </body>
 
+=======
+include 'koneksi.php';
+
+$result = $conn->query("SELECT * FROM negara");
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Negara</title>
+</head>
+<body>
+    <h1>Data Negara</h1>
+    <a href="create.php">Tambah Negara</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Aksi</th>
+        </tr>
+         <li><a href="index.php?halaman=negara"><i class="fa fa-credit-card "></i> negara</a> </li>
+         <div id="page-wrapper">
+            <div id="page-inner">
+			<?php
+         $_GET['halaman']=="hapusnegara"
+		include'hapusnegara.php'
+        ?>
+        <?php while($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td><?php echo $row['id']; ?></td>
+                <td><?php echo $row['nama']; ?></td>
+                <td>
+                    <a href="update.php?id=<?php echo $row['id']; ?>">Edit</a>
+                    <a href="delete.php?id=<?php echo $row['id']; ?>">Hapus</a>
+                </td>
+            </tr>
+        <?php endwhile; ?>
+    </table>
+</body>
+>>>>>>> Stashed changes
 </html>

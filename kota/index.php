@@ -48,7 +48,11 @@ $kotas = $stmt->fetchAll();
             <a href="tambah.php" class="btn btn-success">Add City</a>
             <a href="../index.php" class="btn btn-secondary">Back</a>
         </div>
+<<<<<<< Updated upstream
         <table class="table table-bordered">
+=======
+        <table class="table">
+>>>>>>> Stashed changes
             <thead>
                 <tr>
                     <th>ID</th>
@@ -60,7 +64,11 @@ $kotas = $stmt->fetchAll();
             <tbody>
                 <?php foreach ($kotas as $kota): ?>
                     <tr>
+<<<<<<< Updated upstream
                         <td><?= htmlspecialchars($kota['id_kota']) ?></td>
+=======
+                        <td><?= $kota['id_kota'] ?></td>
+>>>>>>> Stashed changes
                         <td><?= htmlspecialchars($kota['nama_kota']) ?></td>
                         <td><?= htmlspecialchars($kota['nama_provinsi']) ?></td>
                         <td>

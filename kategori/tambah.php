@@ -13,11 +13,20 @@ $jenis_list = $jenis_stmt->fetchAll();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_jenis = $_POST['id_jenis'];
+<<<<<<< Updated upstream
     $nama_kategori = $_POST['nama_kategori'];
     $jumlah_kategori = $_POST['jumlah_kategori'];
 
     $stmt = $pdo->prepare("INSERT INTO kategori (id_jenis, nama_kategori, jumlah_kategori) VALUES (?, ?, ?)");
     $stmt->execute([$id_jenis, $nama_kategori, $jumlah_kategori]);
+=======
+    $id_kategori = $_POST['id_kategori'];
+    $nama_kategori = $_POST['nama_kategori'];
+    $jumlah_kategori = $_POST['jumlah_kategori'];
+
+    $stmt = $pdo->prepare("INSERT INTO kategori (id_kategori, id_jenis, nama_kategori, jumlah_kategori) VALUES (?, ?, ?)");
+    $stmt->execute([$id_jenis, $id_kategori, $nama_kategori, $jumlah_kategori]);
+>>>>>>> Stashed changes
 
     $_SESSION['success'] = "Kategori added successfully!";
     header('Location: index.php');

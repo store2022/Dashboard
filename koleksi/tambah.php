@@ -12,14 +12,23 @@ $museums = $pdo->query("SELECT id_museum, nama_museum FROM museum")->fetchAll();
 $categories = $pdo->query("SELECT id_kategori, nama_kategori FROM kategori")->fetchAll();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+<<<<<<< Updated upstream
+=======
+    $id_koleksi = $_POST['id_koleksi'];
+>>>>>>> Stashed changes
     $nama_koleksi = $_POST['nama_koleksi'];
     $deskripsi = $_POST['deskripsi'];
     $id_museum = $_POST['id_museum'];
     $jumlah_koleksi = $_POST['jumlah_koleksi'];
     $id_kategori = $_POST['id_kategori'];
 
+<<<<<<< Updated upstream
     $stmt = $pdo->prepare("INSERT INTO koleksi (nama_koleksi, deskripsi, id_museum, jumlah_koleksi, id_kategori) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$nama_koleksi, $deskripsi, $id_museum, $jumlah_koleksi, $id_kategori]);
+=======
+    $stmt = $pdo->prepare("INSERT INTO koleksi (id_koleksi, nama_koleksi, deskripsi, id_museum, jumlah_koleksi, id_kategori) VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([$id_koleksi, $nama_koleksi, $deskripsi, $id_museum, $jumlah_koleksi, $id_kategori]);
+>>>>>>> Stashed changes
 
     $_SESSION['success'] = "Koleksi added successfully!";
     header('Location: index.php');
